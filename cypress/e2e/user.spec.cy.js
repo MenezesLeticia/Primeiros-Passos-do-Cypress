@@ -12,26 +12,21 @@ const myInfoPage = new MyInfoPage()
 
 describe('Orange HRM Tests', () => {
  
-  it.only('User Info Update - Sucess', () => {
+  it('User Info Update - Sucess', () => {
     loginPage.acessLoginPage()
     loginPage.loginWithUser(userData.userSucess.username, userData.userSucess.password)
-
+    loginPage.checkAcessValid()
     dashboardPage.checkDashboardPage()
-
     menuPage.accessMyInfo()
-
     myInfoPage.fillPersonalDetails('First Name', 'Middle Name', 'Last Name')
-    myInfoPage.fillEmployeeDetails()
-    myInfoPage.fillStatus()
+    myInfoPage.fillEmployeeDetails('employId', 'otehrId','Drivers Number', '2025-07-09')
+    myInfoPage.fillStatus('2025-08-08')
     myInfoPage.saveForm()
-
     
   })
   it('Login - Fail', () => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    cy.get(selectorsList.usernameField).type(userData.userFail.username)
-    cy.get(selectorsList.passwordField).type(userData.userFail.password)
-    cy.get(selectorsList.loginButton).click()
-    cy.get(selectorsList.wrongCredentialAlert) 
+    loginPage.acessLoginPage()
+    loginPage.loginWithUser(userData.userFail.username, userData.userFail.password) 
+    loginPage.checkAcessInvalid()
   })
 })
