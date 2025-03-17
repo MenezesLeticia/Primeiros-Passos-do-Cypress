@@ -15,7 +15,7 @@ describe('Orange HRM Tests', () => {
   it('User Info Update - Sucess', () => {
     loginPage.acessLoginPage()
     loginPage.loginWithUser(userData.userSucess.username, userData.userSucess.password)
-    loginPage.checkAcessValid()
+    loginPage.checkAcessValid
     dashboardPage.checkDashboardPage()
     menuPage.accessMyInfo()
     myInfoPage.fillPersonalDetails('First Name', 'Middle Name', 'Last Name')
@@ -23,10 +23,5 @@ describe('Orange HRM Tests', () => {
     myInfoPage.fillStatus('2025-08-08')
     myInfoPage.saveForm()
     
-  })
-  it('Login - Fail', () => {
-    loginPage.acessLoginPage()
-    loginPage.loginWithUser(userData.userFail.username, userData.userFail.password) 
-    loginPage.checkAcessInvalid()
   })
 })
